@@ -1,0 +1,104 @@
+.body {
+  background-color: rgb(254, 254, 254);
+}
+header {
+  display: flex;
+  justify-content: center;
+}
+img {
+  width: 20%;
+}
+p {
+  display: flex;
+  justify-content: center;
+}
+
+.Rollbutton {
+  display: flex;
+  justify-content: center;
+  margin-left: 5px;
+}
+.Resetbutton {
+  display: flex;
+  justify-content: center;
+  margin-right: 5px;
+}
+.dice-container {
+  display: flex;
+  justify-content: center;
+}
+
+.dice {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #000;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 24px;
+}
+span{
+    display: flex;
+    justify-content: center;
+}
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 56%;
+  max-width: 400px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.upper-section {
+  background-color: #bd5b69;
+  font-weight: bold;
+}
+.lower-section {
+  background-color: #6753af;
+  font-weight: bold;
+}
+
+.bonus,
+.total {
+  font-weight: bold;
+}
+.Container {
+  display: grid;
+  grid-template-columns: 50%, 50%;
+  grid-template-rows: 50%, 50%;
+}
+.table-left {
+  display: grid;
+  grid-column: 1;
+  grid-row: 1;
+  width: 70%;
+}
+.table-right {
+  display: grid;
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+}
