@@ -21,9 +21,3 @@ if (Rollmade < Maxroll)
 //Rolling Updater
 
 // Reset
-function resetButton(){
-document.getElementById("resetButton").addEventListener("click", function() {
-console.log("Reset")
-});
-resetButton();
-}
