@@ -102,3 +102,6 @@ tr:nth-child(even) {
   grid-row: 1;
   width: 100%;
 }
+.held {
+  border: 2px solid red;
+}

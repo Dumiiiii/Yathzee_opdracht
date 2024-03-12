@@ -20,4 +20,11 @@ if (Rollmade < Maxroll)
 }
 //Rolling Updater
 
-// Reset
+// hold dice
+const holdice = [false, false, false, false, false];
+
+function holdie(index) {
+  holdice[index] = !holdice[index];
+  const dieElement = document.getElementById('die' + (index + 1));
+  dieElement.classList.toggle('held', holdice[index]);
+}
