@@ -105,3 +105,6 @@ tr:nth-child(even) {
 .held {
   border: 2px solid red;
 }
+#aces{
+  color: black;
+}

@@ -14,7 +14,7 @@
     <!--
     Dice 
 -->
-<p id="Rollcount">Rolls</p>
+<p id="rollCount">Rolls left: 3</p>
 <div class="dice-container">
   <div class="dice" id="die1" onclick="holdie(0)">1</div>
   <div class="dice" id="die2" onclick="holdie(1)">2</div>
@@ -26,8 +26,6 @@
     <!--
     Roll button
 -->
-
-
     <div class="Rollbutton">
       <button type="submit" id="diceThrow" onclick="rollAllDice()">Roll</button>
       <!-- 
@@ -39,115 +37,114 @@
     <!--
     Scoreboard Upper Braket 
 -->
-    <div class="Container">
-      <div class="table-left">
-        <table>
+<div class="Container">
+  <div class="table-left">
+      <table>
           <thead>
-            <tr>
-              <td colspan="2" class="upper-section">Upper Section</td>
-              <td>Score</td>
-            </tr>
+              <tr>
+                  <td colspan="2" class="upper-section">Upper Section</td>
+                  <td>Score</td>
+              </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Aces</td>
-              <td><img src="Dice-1-b.svg" alt="Dice 1" ></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Twos</td>
-              <td><img src="Dice-2-b.svg" alt="Dice 2" ></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Threes</td>
-              <td><img src="Dice-3-b.svg" alt="Dice 3" ></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Fours</td>
-              <td><img src="Dice-4-b.svg" alt="Dice 4" ></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Fives</td>
-              <td><img src="Dice-5-b.svg" alt="Dice 5" ></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Sixes</td>
-              <td><img src="Dice-6-b.svg" alt="Dice 6" ></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td colspan="2" class="bonus">Bonus</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td colspan="2" class="total">Total</td>
-              <td></td>
-            </tr>
+              <tr>
+                  <td>Aces</td>
+                  <td><img src="Dice-1-b.svg" alt="Dice 1"></td>
+                  <td id="aces" onclick="onthoud1()"></td>
+              </tr>
+              <tr>
+                  <td>Twos</td>
+                  <td><img src="Dice-2-b.svg" alt="Dice 2"></td>
+                  <td id="twos" onclick="onthoud2()"></td>
+              </tr>
+              <tr>
+                  <td>Threes</td>
+                  <td><img src="Dice-3-b.svg" alt="Dice 3"></td>
+                  <td id="threes" onclick="onthoud3()"></td>
+              </tr>
+              <tr>
+                  <td>Fours</td>
+                  <td><img src="Dice-4-b.svg" alt="Dice 4"></td>
+                  <td id="fours" onclick="onthoud4()"></td>
+              </tr>
+              <tr>
+                  <td>Fives</td>
+                  <td><img src="Dice-5-b.svg" alt="Dice 5"></td>
+                  <td id="fives" onclick="onthoud5()"></td>
+              </tr>
+              <tr>
+                  <td>Sixes</td>
+                  <td><img src="Dice-6-b.svg" alt="Dice 6"></td>
+                  <td id="sixes" onclick="onthoud6()"></td>
+              </tr>
+              <tr>
+                  <td class="bonus">Bonus</td>
+                  <td>35 Points Bonus</td>
+                  <td id="checkbonus"></td>
+              </tr>
+              <tr>
+                  <td colspan="2" class="total">Total</td>
+                  <td id="totaal"></td>
+              </tr>
           </tbody>
-        </table>
-      </div>
-      <!--
-    Scoreboard lower Braket
--->
-      <div class="table-right">
-        <table>
+      </table>
+  </div>
+  <div class="table-right">
+      <table>
           <thead>
-            <tr>
-              <td colspan="2" class="lower-section">Lower Section</td>
-              <td>Score</td>
-            </tr>
+              <tr>
+                  <td colspan="2" class="lower-section">Lower Section</td>
+                  <td>Score</td>
+              </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>3 of a kind</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>4 of a kind</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Full House</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Small Straight</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Large Straight</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Yahtzee</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Chance</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td colspan="2" class="bonus">Yahtzee Bonus</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td colspan="2" class="total">Total</td>
-              <td></td>
-            </tr>
+              <tr>
+                  <td>Three of a kind</td>
+                  <td></td>
+                  <td id="threeOfAKind" onclick="ounthoudThree()"></td>
+
+              </tr>
+              <tr>
+                  <td>Four of a kind</td>
+                  <td></td>
+                  <td id="FourOfAKind"></td>
+              </tr>
+              <tr>
+                  <td>Full House</td>
+                  <td>25 Points</td>
+                  <td id="Full_House"></td>
+              </tr>
+              <tr>
+                  <td>Small Straight</td>
+                  <td>30 Points</td>
+                  <td id="Small_straight"></td>
+              </tr>
+              <tr>
+                  <td>Large Straight</td>
+                  <td >40 Points</td>
+                  <td id="Large_Straight"></td>
+              </tr>
+              <tr>
+                  <td >Yahtzee</td>
+                  <td >50 Points</td>
+                  <td id="Yahtzee"></td>
+              </tr>
+              <tr>
+                  <td>Chance</td>
+                  <td></td>
+                  <td id="Chance"></td>
+              </tr>
+              <tr>
+                  <td colspan="2" class="bonus">Yahtzee Bonus</td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td colspan="2" class="total">Grand Total</td>
+                  <td></td>
+              </tr>
           </tbody>
-        </table>
-      </div>
-    </div>
+      </table>
+  </div>
+</div>
   </body>
 </html>
