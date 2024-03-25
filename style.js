@@ -100,7 +100,7 @@ for (let i = 0; i < 6; i++) {
     }
 }
 document.getElementById("FourOfAKind").innerHTML = Four_of;
-
+// Fullhouse
 let Full_house = 0;
 
 for(j = 0; j < 6; j++){
@@ -111,7 +111,18 @@ for (let i = 0; i < 6; i++) {
         }
     }
     document.getElementById("Full_House").innerHTML = Full_house;
-
+    // Small straight
+    let Small_straight = 0;
+    if(dices[0]&& dices[1]&&dices[2]&&dices[3]||dices[1]&&dices[2]&&dices[3]&&dices[4]||dices[2]&&dices[3] && dices[4] &&dices[5]){
+    Small_straight = 30;
+    }
+    document.getElementById("Small_straight").innerHTML = Small_straight;
+// Large Straight
+    let Large_straight = 0;
+    if(dices[0]&& dices[1]&&dices[2]&&dices[3]&& dices[4]||dices[1]&& dices[2]&&dices[3]&&dices[4]&& dices[5]){
+    Large_straight = 40;
+    }
+    document.getElementById("Large_Straight").innerHTML = Large_straight;
     let Yahtzee = 0;
 
     for (let i = 0; i < 6; i++) {
@@ -126,7 +137,8 @@ for (let i = 0; i < 6; i++) {
     let Chance = dice.reduce((total, die) => total + die, 0);
 document.getElementById("Chance").innerHTML = Chance;
 
-
+Grandtotaal = subtotaal +Three_of+Four_of+Full_house+Small_straight+Large_straight+Yahtzee+Chance;
+document.getElementById("Grand_Total").innerHTML = Grandtotaal;
 }
 
 
@@ -191,6 +203,32 @@ function ounthoudFour() {
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
     document.getElementById("FourOfAKind").style.color = "red";
 }
+function ounthoudFull() {
+    Rollmade = 0;
+    document.getElementById("rollCount").textContent = "Rolls left: " + 3;
+    document.getElementById("Full_House").style.color = "red";
+}
+function ounthoudSmall_str() {
+    Rollmade = 0;
+    document.getElementById("rollCount").textContent = "Rolls left: " + 3;
+    document.getElementById("Small_straight").style.color = "red";
+}
+function ounthoudLarge_str() {
+    Rollmade = 0;
+    document.getElementById("rollCount").textContent = "Rolls left: " + 3;
+    document.getElementById("Large_Straight").style.color = "red";
+}
+function ounthoudYathzee() {
+    Rollmade = 0;
+    document.getElementById("rollCount").textContent = "Rolls left: " + 3;
+    document.getElementById("Yahtzee").style.color = "red";
+}
+function ounthoudChance() {
+    Rollmade = 0;
+    document.getElementById("rollCount").textContent = "Rolls left: " + 3;
+    document.getElementById("Chance").style.color = "red";
+}
+
 
 
 
