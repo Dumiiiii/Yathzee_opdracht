@@ -142,61 +142,80 @@ document.getElementById("Grand_Total").innerHTML = Grandtotaal;
 }
 
 
-
 function onthoud1(){
-    document.getElementById("aces").innerHTML = dice[0];
+    let aces = document.getElementById("aces");
+    if(aces.name == "locked") return;
+    aces.innerHTML = dice[0];
     sub[0] = dice[0];
     kies[0] = false;
     Rollmade = 0;
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
-    document.getElementById("aces").style.color = "red";
+    aces.style.color = "red";
+    aces.name = "locked";
 }
 function onthoud2(){
-    document.getElementById("twos").innerHTML = dice[1];
+    document.getElementById("twos");
+    if(twos.name == "locked") return;
+    twos.innerHTML = dice[1];
     sub[1] = dice[1];
     kies[1] = false;
     Rollmade = 0;
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
     document.getElementById("twos").style.color = "red";
+    twos.name = "locked";
 }
 function onthoud3(){
-    document.getElementById("threes").innerHTML = dice[2];
+    document.getElementById("threes")
+    if(threes.name == "locked") return;
+    threes.innerHTML = dice[2];
     sub[2] = dice[2];
     kies[2] = false;
     Rollmade = 0;
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
     document.getElementById("threes").style.color = "red";
+    threes.name = "locked";
 }
 function onthoud4(){
-    document.getElementById("fours").innerHTML = dice[3];
+    document.getElementById("fours")
+    if(fours.name == "locked") return;
+    fours.innerHTML = dice[3];
     sub[3] = dice[3];
     kies[3] = false;
     Rollmade = 0;
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
     document.getElementById("fours").style.color = "red";
+    fours.name = "locked";
 }
 function onthoud5(){
-    document.getElementById("fives").innerHTML = dice[4];
+    document.getElementById("fives")
+    if(fives.name == "locked") return;
+    fives.innerHTML = dice[4];
     sub[4] = dice[4];
     kies[4] = false;
     Rollmade = 0;
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
     document.getElementById("fives").style.color = "red";
+    fives.name = "locked";
 }
 function onthoud6(){
-    document.getElementById("sixes").innerHTML = dice[5];
+    document.getElementById("sixes")
+    if(sixes.name == "locked") return;
+    sixes.innerHTML = dice[5];
     sub[5] = dice[5];
     kies[5] = false;
     Rollmade = 0;
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
     document.getElementById("sixes").style.color = "red";
+    sixes.name = "locked";
 }
 
 
 function ounthoudThree() {
+    if(threeOfAKind.name == "locked") return;
     Rollmade = 0;
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
     document.getElementById("threeOfAKind").style.color = "red";
+    threeOfAKind.name = "locked";
 }
 function ounthoudFour() {
     Rollmade = 0;
