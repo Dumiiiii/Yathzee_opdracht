@@ -32,9 +32,6 @@ function rollAllDice(){
     if(kies[3] == true){document.getElementById("fours").innerHTML = dice[3];}
     if(kies[4] == true){document.getElementById("fives").innerHTML = dice[4];}
     if(kies[5] == true){document.getElementById("sixes").innerHTML = dice[5];}
-
-    if(kies[6] == true){document.getElementById("threeOfAKind").innerHTML = Three_of;}
-
     document.getElementById("totaal").innerHTML = subtotaal;
 
 }
@@ -79,6 +76,9 @@ if(subtotaal >= 60){
     document.getElementById("checkbonus").innerHTML = "35";
 }
 // Max een keer fillen
+
+
+// Three of a kind
 let Three_of = 0;
 
 for (let i = 0; i < 6; i++) {
@@ -90,7 +90,7 @@ for (let i = 0; i < 6; i++) {
 document.getElementById("threeOfAKind").innerHTML = Three_of;
 
 
-
+// Four  of a kind
 let Four_of = 0;
 
 for (let i = 0; i < 6; i++) {
@@ -101,27 +101,34 @@ for (let i = 0; i < 6; i++) {
 }
 document.getElementById("FourOfAKind").innerHTML = Four_of;
 
-let isSmallStraight = false;
-// small straight
-function small_of(){
-    
-    for (let i = 0; i < 3; i++) {
-        if ((dice[i] + 1 === dice[i + 1]) &&
-            (dice[i + 1] + 1 === dice[i + 2]) &&
-            (dice[i + 2] + 1 === dice[i + 3])) {
-            isSmallStraight = true;
-            //break;
+let Full_house = 0;
+
+for(j = 0; j < 6; j++){
+for (let i = 0; i < 6; i++) {
+    if (dices[i] == 3 && dices[j] == 2) {
+                Full_house = 25;
+            }
         }
     }
+    document.getElementById("Full_House").innerHTML = Full_house;
 
-    const smallStraightCell = document.getElementById("Small_straight");
-    if (isSmallStraight) {
-        smallStraightCell.textContent = "30";
-    } else {
-        smallStraightCell.textContent = "0";
+    let Yahtzee = 0;
+
+    for (let i = 0; i < 6; i++) {
+        if (dices[i] >= 5) {
+            Yahtzee = 50;
+            break;
+        }
     }
+    document.getElementById("Yahtzee").innerHTML = Yahtzee;
+
+    // chance Score
+    let Chance = dice.reduce((total, die) => total + die, 0);
+document.getElementById("Chance").innerHTML = Chance;
+
+
 }
-}
+
 
 
 function onthoud1(){
@@ -174,14 +181,20 @@ function onthoud6(){
 }
 
 
-
-
-
-
 function ounthoudThree() {
     Rollmade = 0;
-    kies[6] = false;
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
     document.getElementById("threeOfAKind").style.color = "red";
 }
+function ounthoudFour() {
+    Rollmade = 0;
+    document.getElementById("rollCount").textContent = "Rolls left: " + 3;
+    document.getElementById("FourOfAKind").style.color = "red";
+}
+
+
+
+
+
+
 
