@@ -1,14 +1,34 @@
-// die Throw
+// Array and andere digen
 const canThrowdice = [true,true,true,true,true,];
 const diceThrow = [1, 2, 3, 4, 5];
 let Rollmade = 0;
 const Maxroll = 3;
 const dices =[0,0,0,0,0,0];
 const dice = [0,0,0,0,0,0];
-const kies = [true, true, true, true, true, true, true];
+const kies = [true, true, true, true, true, true];
 const sub = [0,0,0,0,0,0];
+const sublower = [0,0,0,0,0,0,0];
+const kieslower = [true, true, true, true, true, true, true];
+let Three_of = 0;
+let Three_TF = false;
+let Four_of = 0;
+let Four_TF = false;
+let Full_housePunt = 0;
+let Full_houseTF = false;
+let Small_straightPunt = 0;
+let Large_straightPunt = 0;
+let YahtzeePunt = 0;
+let YahtzeeTF = false;
+let ChancePunt = 0;
 
+
+
+// Roll function
 function rollAllDice(){
+    Full_houseTF = false;
+    YahtzeeTF = false;
+    Four_TF = false;
+    Three_TF = false;
     if (Rollmade < Maxroll) {
         for (let i = 0; i < diceThrow.length; i++) {
             if (!holdice[i]) {
@@ -16,7 +36,6 @@ function rollAllDice(){
                 diceThrow[i] = rollResult;
                 console.log("Dice " + (i + 1) + " rolled: " + rollResult);
                 document.getElementById("die" + (i + 1)).textContent = rollResult;
-
             }
         }
         Rollmade++;
@@ -24,7 +43,7 @@ function rollAllDice(){
     } else {
         alert("Max NUH UH AH !!!");
     }
-
+// Score Calculate
     calculateScore();
     if(kies[0] == true){document.getElementById("aces").innerHTML = dice[0];}
     if(kies[1] == true){document.getElementById("twos").innerHTML = dice[1];}
@@ -34,7 +53,15 @@ function rollAllDice(){
     if(kies[5] == true){document.getElementById("sixes").innerHTML = dice[5];}
     document.getElementById("totaal").innerHTML = subtotaal;
 
-}
+    if(kieslower[0] == true){document.getElementById("threeOfAKind").innerHTML = Three_of;}
+    if(kieslower[1] == true){document.getElementById("FourOfAKind").innerHTML = Four_of;}
+    if(kieslower[2] == true){document.getElementById("Full_House").innerHTML =Full_housePunt;}
+    if(kieslower[3] == true){document.getElementById("Small_straight").innerHTML = Small_straightPunt;}
+    if(kieslower[4] == true){document.getElementById("Large_Straight").innerHTML = Large_straightPunt;}
+    if(kieslower[5] == true){document.getElementById("Yahtzee").innerHTML = YahtzeePunt;}
+ }
+
+
 // update rolling
 function updateRollCount() {
   const remainingRolls = Maxroll - Rollmade;
@@ -47,7 +74,12 @@ function holdie(index) {
     const dieElement = document.getElementById('die' + (index + 1));
     dieElement.classList.toggle('held', holdice[index]);
 }
-//
+function unholdAllDice() {
+    holdice.fill(false);
+    const diceElements = document.querySelectorAll('.die');
+    diceElements.forEach(dieElement => dieElement.classList.remove('held'));
+}
+// CalculateValue
 const CalculateValue = [0,0,0,0,0];
 let subtotaal = 0;
 function calculateScore (){
@@ -71,79 +103,93 @@ dice[4] = dices[4] * 5;
 dice[5] = dices[5] * 6;
 
 subtotaal = sub[0] + sub[1] + sub[2] + sub[3] + sub[4] + sub[5];
-if(subtotaal >= 60){
+if(subtotaal >= 63){
     subtotaal = sub[0] + sub[1] + sub[2] + sub[3] + sub[4] + sub[5] + 35;
     document.getElementById("checkbonus").innerHTML = "35";
 }
-// Max een keer fillen
-
 
 // Three of a kind
-let Three_of = 0;
-
+if(kieslower[0] == true){
 for (let i = 0; i < 6; i++) {
     if (dices[i] >= 3) {
-        Three_of = dice[0] + dice[1] + dice[2] + dice[3] + dice[4] + dice[5];
-        break;
+        Three_TF = true;
     }
+}
+if(Three_TF == true){Three_of = dice[0] + dice[1] + dice[2] + dice[3] + dice[4] + dice[5];}else{Three_of = 0;}
 }
 document.getElementById("threeOfAKind").innerHTML = Three_of;
 
-
 // Four  of a kind
-let Four_of = 0;
-
+if(kieslower[1] == true){
 for (let i = 0; i < 6; i++) {
     if (dices[i] >= 4) {
-        Four_of = dice[0] + dice[1] + dice[2] + dice[3] + dice[4] + dice[5];
-        break;
+        Four_TF = true;  
     }
+    }
+    if (Four_TF == true){Four_of = dice[0] + dice[1] + dice[2] + dice[3] + dice[4] + dice[5];}else{Four_of = 0; 
+}
 }
 document.getElementById("FourOfAKind").innerHTML = Four_of;
-// Fullhouse
-let Full_house = 0;
 
+//Fullhouse
+
+if(kieslower[2] == true){
 for(j = 0; j < 6; j++){
 for (let i = 0; i < 6; i++) {
-    if (dices[i] == 3 && dices[j] == 2) {
-                Full_house = 25;
-            }
+    if (dices[i] == 3 && dices[j] == 2){
+                //Full_housePunt = 25;  
+                Full_houseTF = true;
+    } 
+
         }
     }
-    document.getElementById("Full_House").innerHTML = Full_house;
+    if(Full_houseTF == true){Full_housePunt = 25;}else{Full_housePunt = 0;}
+}
+document.getElementById("Full_House").innerHTML = Full_housePunt;
     // Small straight
-    let Small_straight = 0;
+    if(kieslower[3] == true){
     if(dices[0]&& dices[1]&&dices[2]&&dices[3]||dices[1]&&dices[2]&&dices[3]&&dices[4]||dices[2]&&dices[3] && dices[4] &&dices[5]){
-    Small_straight = 30;
-    }
-    document.getElementById("Small_straight").innerHTML = Small_straight;
-// Large Straight
-    let Large_straight = 0;
-    if(dices[0]&& dices[1]&&dices[2]&&dices[3]&& dices[4]||dices[1]&& dices[2]&&dices[3]&&dices[4]&& dices[5]){
-    Large_straight = 40;
-    }
-    document.getElementById("Large_Straight").innerHTML = Large_straight;
-    let Yahtzee = 0;
+    Small_straightPunt = 30;
+    }else{Small_straightPunt = 0;}
+}
+    document.getElementById("Small_straight").innerHTML = Small_straightPunt;
 
+// Large Straight
+if(kieslower[4] == true){
+    if(dices[0]&& dices[1]&&dices[2]&&dices[3]&& dices[4]||dices[1]&& dices[2]&&dices[3]&&dices[4]&& dices[5]){
+    Large_straightPunt = 40;
+    }else{Large_straightPunt = 0;}
+}
+    document.getElementById("Large_Straight").innerHTML = Large_straightPunt;
+
+//Yathzee 
+if(kieslower[5] == true){
     for (let i = 0; i < 6; i++) {
-        if (dices[i] >= 5) {
-            Yahtzee = 50;
-            break;
+        if (dices[i] == 5) {
+            YahtzeeTF = true;
         }
     }
-    document.getElementById("Yahtzee").innerHTML = Yahtzee;
+    if(YahtzeeTF == true){YahtzeePunt = 50;}else{YahtzeePunt = 0;}
+}
+    document.getElementById("Yahtzee").innerHTML = YahtzeePunt;
 
-    // chance Score
-    let Chance = dice.reduce((total, die) => total + die, 0);
-document.getElementById("Chance").innerHTML = Chance;
+// chance Score
+if(kieslower[6] == true){
+    ChancePunt = dice.reduce((total, die) => total + die, 0);
+    document.getElementById("Chance").innerHTML = ChancePunt;
+}
 
-Grandtotaal = subtotaal +Three_of+Four_of+Full_house+Small_straight+Large_straight+Yahtzee+Chance;
-document.getElementById("Grand_Total").innerHTML = Grandtotaal;
+
+// Grand totaal
+    let Lowertotaal = sublower[0] + sublower[1]+ sublower[2]+ sublower[3]+ sublower[4]+ sublower[5]+ sublower[6];
+    document.getElementById("Lower_Total").innerHTML = Lowertotaal;
+    Grandtotal = Lowertotaal + subtotaal;
+    document.getElementById("Grand_Total").innerHTML = Grandtotal;
 }
 
 
 function onthoud1(){
-    let aces = document.getElementById("aces");
+    document.getElementById("aces");
     if(aces.name == "locked") return;
     aces.innerHTML = dice[0];
     sub[0] = dice[0];
@@ -210,43 +256,71 @@ function onthoud6(){
 }
 
 
-function ounthoudThree() {
+function onthoudThree() {
     if(threeOfAKind.name == "locked") return;
     Rollmade = 0;
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
     document.getElementById("threeOfAKind").style.color = "red";
+    sublower[0] = Three_of;
+    kieslower[0] = false;
     threeOfAKind.name = "locked";
 }
-function ounthoudFour() {
+function onthoudFour() {
+    if(FourOfAKind.name == "locked") return;
     Rollmade = 0;
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
     document.getElementById("FourOfAKind").style.color = "red";
+    sublower[1] = Four_of;
+    kieslower[1] = false;
+    FourOfAKind.name = "locked";
 }
-function ounthoudFull() {
+function onthoudFull() {
+    if(Full_House.name == "locked") return;
     Rollmade = 0;
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
-    document.getElementById("Full_House").style.color = "red";
+    document.getElementById("Full_House").style.color = "red";  
+    sublower[2] = Full_housePunt;
+    kieslower[2] = false;
+    Full_House.name = "locked";
 }
-function ounthoudSmall_str() {
+function onthoudSmall_str() {
+    if(Small_straight.name == "locked") return;
     Rollmade = 0;
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
     document.getElementById("Small_straight").style.color = "red";
+    sublower[3] = Small_straightPunt;
+    kieslower[3] = false;
+    Small_straight.name = "locked";
 }
-function ounthoudLarge_str() {
+function onthoudLarge_str() {
+    if(Large_Straight.name == "locked") return;
     Rollmade = 0;
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
     document.getElementById("Large_Straight").style.color = "red";
+    sublower[4] = Large_straightPunt;
+    kieslower[4] = false;
+    Large_Straight.name = "locked";
 }
-function ounthoudYathzee() {
+function onthoudYathzee() {
+    if(Yahtzee.name == "locked") return;
     Rollmade = 0;
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
     document.getElementById("Yahtzee").style.color = "red";
+    sublower[5] = YahtzeePunt;
+    kieslower[5] = false;
+    Yahtzee.name = "locked";
 }
-function ounthoudChance() {
+function onthoudChance() {
+    if(Chance.name == "locked") return;
     Rollmade = 0;
     document.getElementById("rollCount").textContent = "Rolls left: " + 3;
     document.getElementById("Chance").style.color = "red";
+    sublower[6] = ChancePunt;
+    kieslower[6] = false;
+    Chance.name = "locked";
 }
+
+
 
 
 

@@ -11,7 +11,7 @@
     <header>
       <h1>Yathzee Game</h1>
     </header>
-    <!--
+<!--
     Dice 
 -->
 <p id="rollCount">Rolls left: 3</p>
@@ -23,7 +23,7 @@
   <div class="dice" id="die5" onclick="holdie(4)">5</div>
 </div>
 
-    <!--
+<!--
     Roll button
 -->
     <div class="Rollbutton">
@@ -34,7 +34,7 @@
       <div class="Resetbutton"></div>
       <button type="reset" onclick="window.location.reload()">Reset</button>
       </div>
-    <!--
+ <!--
     Scoreboard Upper Braket 
 -->
 <div class="Container">
@@ -83,7 +83,7 @@
                   <td id="checkbonus"></td>
               </tr>
               <tr>
-                  <td colspan="2" class="total">Total</td>
+                  <td colspan="2" class="total">Upper Total</td>
                   <td id="totaal"></td>
               </tr>
           </tbody>
@@ -101,39 +101,44 @@
               <tr>
                   <td>Three of a kind</td>
                   <td></td>
-                  <td id="threeOfAKind" onclick="ounthoudThree()"></td>
+                  <td id="threeOfAKind" onclick="onthoudThree()"></td>
 
               </tr>
               <tr>
                   <td>Four of a kind</td>
                   <td></td>
-                  <td id="FourOfAKind" onclick="ounthoudFour()"></td>
+                  <td id="FourOfAKind" onclick="onthoudFour()"></td>
               </tr>
               <tr>
                   <td>Full House</td>
                   <td>25 Points</td>
-                  <td id="Full_House" onclick="ounthoudFull()"></td>
+                  <td id="Full_House" onclick="onthoudFull()"></td>
               </tr>
               <tr>
                   <td>Small Straight</td>
                   <td>30 Points</td>
-                  <td id="Small_straight" onclick="ounthoudSmall_str()"></td>
+                  <td id="Small_straight" onclick="onthoudSmall_str()"></td>
               </tr>
               <tr>
                   <td>Large Straight</td>
                   <td >40 Points</td>
-                  <td id="Large_Straight" onclick="ounthoudLarge_str()"></td>
+                  <td id="Large_Straight" onclick="onthoudLarge_str()"></td>
               </tr>
               <tr>
                   <td >Yahtzee</td>
                   <td >50 Points</td>
-                  <td id="Yahtzee" onclick="ounthoudYathzee()"></td>
+                  <td id="Yahtzee" onclick="onthoudYathzee()"></td>
               </tr>
               <tr>
                   <td>Chance</td>
                   <td></td>
-                  <td id="Chance" onclick="ounthoudChance()"></td>
+                  <td id="Chance" onclick="onthoudChance()"></td>
               </tr>
+              <tr>
+                <td>Lower Total</td>
+                <td></td>
+                <td id="Lower_Total"></td>
+            </tr>
               <tr>
                   <td colspan="2" class="total">Grand Total</td>
                   <td id="Grand_Total"></td>
